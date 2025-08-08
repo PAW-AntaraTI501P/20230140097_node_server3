@@ -4,20 +4,68 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us</title>
-  <link 
-    rel="stylesheet" 
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-  />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      border: none;
+      border-radius: 10px;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .btn-lg {
+      border-radius: 30px;
+      padding: 0.75rem 2rem;
+    }
+  </style>
 </head>
 <body>
-  <div class="container mt-5">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">Node App</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item <%= activePage === 'home' ? 'active' : '' %>">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item <%= activePage === 'todos' ? 'active' : '' %>">
+            <a class="nav-link" href="/todos-page">Daftar Tugas</a>
+          </li>
+          <li class="nav-item <%= activePage === 'contact' ? 'active' : '' %>">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5"></div>
     <div class="row justify-content-center">
-      <div class="col-md-8 text-center">
-        <h1 class="mb-4">Welcome to the Contact Page</h1>
-        <p class="lead">Need help? Reach out to us anytime.</p>
-        <a href="/" class="btn btn-success mt-3">Go to Home Page</a>
+      <div class="col-md-6 text-center">
+        <div class="card shadow-sm">
+          <div class="card-body py-5">
+            <h1 class="display-4 mb-3">Welcome to the contact</h1>
+            <p class="text-muted mb-4">Contact</p>
+            <a href="/" class="btn btn-primary btn-lg px-4">
+              <i class="fas fa-home mr-2"></i>Go to Home Page
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
