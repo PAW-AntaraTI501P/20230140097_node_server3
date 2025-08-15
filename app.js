@@ -6,17 +6,24 @@ const port = process.env.PORT ;
 const { router: todoRoutes, todos } = require("./routes/todo.js");
 const todoDbRoutes = require("./routes/tododb.js");
 const db = require("./database/db.js");
+const expressLayouts = require("express-ejs-layouts");
 
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
+app.set("layout", "layouts/main-layout");
+app.use(expressLayouts);
 app.use("/todos", todoRoutes);
 app.use("/api/todos", todoDbRoutes);
 
 app.get("/todos-data", (req, res) => {
   res.json(todos);
+});
+
+app.get("/todos-list", (req, res) => {
+  res.render("todos-page", { todos: todos });
 });
 
 app.get("/todos-page", (req, res) => {
@@ -48,6 +55,9 @@ app.get("/todo-view", (req, res) => {
         });
     });
 });
+
+app.use("/todos", todoRoutes);
+
 
 app.use((req, res) => {
   res.status(404).send("404 - Page Not Found");
