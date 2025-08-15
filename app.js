@@ -22,9 +22,7 @@ app.get("/todos-data", (req, res) => {
   res.json(todos);
 });
 
-app.get("/todos-list", (req, res) => {
-  res.render("todos-page", { todos: todos });
-});
+
 
 app.get("/todos-page", (req, res) => {
   res.render("todos-page", { 
