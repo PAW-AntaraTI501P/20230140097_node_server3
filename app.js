@@ -23,7 +23,6 @@ app.get("/todos-data", (req, res) => {
 });
 
 
-
 app.get("/todos-page", (req, res) => {
   res.render("todos-page", { 
     todos: todos,
@@ -31,27 +30,28 @@ app.get("/todos-page", (req, res) => {
   });
 });
 
+
 app.get("/", (req, res) => {
   res.render("index", {
-    activePage: 'home'
-  });
+    layout: "layouts/main-layout",
+  }); 
 });
 
 app.get("/contact", (req, res) => {
   res.render("contact", {
-    activePage: 'contact'
-  });
+    layout: "layouts/main-layout",
+  }); 
 });
 
+
 app.get("/todo-view", (req, res) => {
-    db.query('SELECT * FROM todos', (err, results) => { 
-        if (err) {
-            return res.status(500).send('Internal Server Error');
-        }
-        res.render("todo", {
-            todos: results
-        });
+  db.query("SELECT * from todos", (err, todos) => {
+    if (err) return res.status(500).send("Internal Server Error");
+    res.render("todo", {
+      todos: todos,
+      layout: "layouts/main-layout",
     });
+  });
 });
 
 app.use("/todos", todoRoutes);
